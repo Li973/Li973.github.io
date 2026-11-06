@@ -1,5 +1,5 @@
 /* ==========================================================================
-   孤独林 · personal homepage
+   珂学空间 · personal homepage
    - 固定外壳：顶栏 + 左栏静止，只有右栏 .content 可滚动
    - 博客文章：posts/index.json（清单） + posts/*.md（正文，Markdown）
    - 归档：读取同一份清单，按年份自动生成时间轴
@@ -288,7 +288,7 @@
     var brand = $('#brandHome');
     if (navArchive) navArchive.classList.toggle('active', isArchive);
     if (brand) brand.classList.toggle('active', !isArchive);
-    document.title = isArchive ? '归档 · 孤独林' : '孤独林 · 个人主页';
+    document.title = isArchive ? '归档 · 珂学空间' : '珂学空间 · Li973 的个人主页';
 
     // 切换视图时右栏回到顶部
     if (contentEl) contentEl.scrollTop = 0;
@@ -303,7 +303,7 @@
 
   function bindNav() {
     window.addEventListener('hashchange', applyRoute);
-    // 点「孤独林」/「返回文章」时即使 hash 未变化也回到顶部
+    // 点「珂学空间」/「返回文章」时即使 hash 未变化也回到顶部
     document.addEventListener('click', function (e) {
       if (e.target.closest && e.target.closest('[data-view="home"]')) {
         scrollToY(0, !reduceMotion);
