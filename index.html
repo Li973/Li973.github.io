@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Li973 的个人主页 — AI Infra / RL Infra / 视觉小说，东北大学浑南校区。">
+<meta name="description" content="孤独林的个人主页 — AI Infra / RL Infra / 视觉小说，东北大学浑南校区。">
 <meta name="theme-color" content="#0b1c26">
-<title>Li973 · 个人主页</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b1c26'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='34' fill='%238ee6f2' font-family='sans-serif'%3EL%3C/text%3E%3C/svg%3E">
+<title>孤独林 · 个人主页</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b1c26'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-size='32' fill='%238ee6f2' font-family='sans-serif'%3E%E5%AD%A4%3C/text%3E%3C/svg%3E">
 <link rel="preload" as="image" href="background.jpg">
+<link rel="preload" as="image" href="assets/avatar.jpg">
 <link rel="stylesheet" href="assets/style.css">
 
 <!-- MathJax 配置：$...$ / $$...$$ 行内与独立公式。脚本由 app.js 动态加载，主 CDN 失败自动换备用源 -->
@@ -28,7 +29,7 @@
 </head>
 <body>
 
-<!-- 固定背景：页面向下滚动时它始终保持不动 -->
+<!-- 固定背景：只有右栏滚动，背景与外壳完全静止 -->
 <div class="bg" aria-hidden="true"></div>
 <div class="bg-shade" aria-hidden="true"></div>
 <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
@@ -43,29 +44,29 @@
   <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12.5V4a1 1 0 0 1 1-1h8.5L21 11.5 12.5 20 3 12.5Z"/><circle cx="7.5" cy="7.5" r="1.3"/></symbol>
   <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.4l6.1-.8L12 3Z"/></symbol>
   <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M20 12H4M10 6l-6 6 6 6"/></symbol>
+  <symbol id="i-archive" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="4" rx="1"/><path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8M10 12h4"/></symbol>
 </svg>
 
+<!-- 顶栏：固定 -->
 <header class="topbar glass" id="topbar">
-  <a class="brand" href="#top">
-    <span class="brand-mark">L</span>
-    <span class="brand-text"><strong>Li973</strong><small>personal space</small></span>
-  </a>
+  <a class="brand" id="brandHome" href="#home" data-view="home">孤独林</a>
   <nav class="nav" aria-label="主导航">
-    <a href="#top">首页</a>
-    <a href="#blog">博客</a>
+    <a href="#archive" id="navArchive">归档 <svg class="ic"><use href="#i-archive"/></svg></a>
     <a href="https://github.com/Li973" target="_blank" rel="noopener">GitHub <svg class="ic"><use href="#i-ext"/></svg></a>
     <a href="mailto:20236521@stu.neu.edu.cn">联系我</a>
   </nav>
 </header>
 
-<main class="layout" id="top">
+<!-- 固定外壳：左栏静止，只有右栏可滚动 -->
+<main class="layout">
 
-  <!-- 左栏：窄，个人信息 -->
+  <!-- 左栏：窄，个人信息（固定） -->
   <aside class="sidebar">
     <section class="glass profile" aria-label="个人信息">
-      <div class="avatar" aria-hidden="true"><span>Li</span></div>
+      <div class="avatar"><img src="assets/avatar.jpg" alt="孤独林的头像"></div>
       <p class="hello">Hello, I'm</p>
-      <h1 class="name">Li973</h1>
+      <h1 class="name">孤独林</h1>
       <p class="tagline">在算力、训练与故事之间，找一点确定性。</p>
 
       <div class="divider"></div>
@@ -109,32 +110,51 @@
     </section>
   </aside>
 
-  <!-- 右栏：宽，博客文章 -->
-  <section class="content" id="blog" aria-label="博客文章">
-    <div class="glass section-head">
-      <div>
-        <p class="eyebrow">WRITING / NOTES</p>
-        <h2 class="section-title">博客文章</h2>
-        <p class="section-desc">关于系统、训练与一些慢慢想明白的事。支持 Markdown 与 LaTeX。</p>
+  <!-- 右栏：宽，唯一可滚动区域 -->
+  <section class="content" id="content" aria-label="主内容">
+
+    <!-- 视图一：文章列表 -->
+    <div class="view" id="viewPosts">
+      <div class="glass section-head">
+        <div>
+          <p class="eyebrow">WRITING / NOTES</p>
+          <h2 class="section-title">博客文章</h2>
+          <p class="section-desc">关于系统、训练与一些慢慢想明白的事。支持 Markdown 与 LaTeX。</p>
+        </div>
+        <span class="count" id="postCount">—</span>
       </div>
-      <span class="count" id="postCount">—</span>
+
+      <div class="post-list" id="postList">
+        <div class="glass post placeholder">正在载入文章…</div>
+      </div>
+
+      <p class="end-note">— 已经到底啦 —</p>
     </div>
 
-    <div class="post-list" id="postList">
-      <div class="glass post placeholder">正在载入文章…</div>
+    <!-- 视图二：归档（内容由 posts/index.json 自动生成） -->
+    <div class="view" id="viewArchive" hidden>
+      <div class="glass section-head">
+        <div>
+          <p class="eyebrow">ARCHIVE / TIMELINE</p>
+          <h2 class="section-title">归档</h2>
+          <p class="section-desc">按时间倒序收录的全部文章，共 <span id="archiveTotal">0</span> 篇。</p>
+        </div>
+        <a class="back-link" href="#home" data-view="home"><svg class="ic"><use href="#i-left"/></svg> 返回文章</a>
+      </div>
+      <div class="glass archive-body" id="archiveBody">
+        <p class="archive-empty">正在生成归档…</p>
+      </div>
     </div>
 
-    <p class="end-note">— 已经到底啦 —</p>
+    <footer class="footer">
+      <span>© <span id="year">2026</span> 孤独林</span>
+      <span class="sep">·</span>
+      <span>背景与头像 © 原作者，仅作个人主页使用</span>
+      <span class="sep">·</span>
+      <span>Built with a little bit of glass and math</span>
+    </footer>
   </section>
 </main>
-
-<footer class="footer">
-  <span>© <span id="year">2026</span> Li973</span>
-  <span class="sep">·</span>
-  <span>背景图 © 原作者，仅作个人主页使用</span>
-  <span class="sep">·</span>
-  <span>Built with a little bit of glass and math</span>
-</footer>
 
 <div class="scroll-hint" id="scrollHint" aria-hidden="true">向下滚动<span>↓</span></div>
 <button class="to-top" id="toTop" type="button" aria-label="回到顶部"><svg class="ic"><use href="#i-up"/></svg></button>
