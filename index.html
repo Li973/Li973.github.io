@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Li973 的个人主页 — AI Infra / RL Infra / 视觉小说，东北大学浑南校区。">
+<meta name="theme-color" content="#0b1c26">
+<title>Li973 · 个人主页</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b1c26'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='34' fill='%238ee6f2' font-family='sans-serif'%3EL%3C/text%3E%3C/svg%3E">
+<link rel="preload" as="image" href="background.jpg">
+<link rel="stylesheet" href="assets/style.css">
+
+<!-- MathJax 配置：$...$ / $$...$$ 行内与独立公式。脚本由 app.js 动态加载，主 CDN 失败自动换备用源 -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] },
+    chtml: { scale: 1 },
+    startup: { typeset: false }
+  };
+</script>
+<script defer src="assets/vendor/marked.min.js"></script>
+<script defer src="assets/app.js"></script>
+</head>
+<body>
+
+<!-- 固定背景：页面向下滚动时它始终保持不动 -->
+<div class="bg" aria-hidden="true"></div>
+<div class="bg-shade" aria-hidden="true"></div>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<!-- 图标 -->
+<svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-5.3 7-11a7 7 0 1 0-14 0c0 5.7 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24"><path d="M12 2.5a9.5 9.5 0 0 0-3 18.5c.5.1.6-.2.6-.5v-1.8c-2.7.6-3.3-1.1-3.3-1.1-.4-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.5-1.1-4.5-4.9 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 4.9 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6.6.7 1 1.6 1 2.7 0 3.8-2.3 4.6-4.5 4.9.4.3.7.9.7 1.9v2.7c0 .3.2.6.7.5A9.5 9.5 0 0 0 12 2.5Z"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.5l3.5 2"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12.5V4a1 1 0 0 1 1-1h8.5L21 11.5 12.5 20 3 12.5Z"/><circle cx="7.5" cy="7.5" r="1.3"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.4l6.1-.8L12 3Z"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+</svg>
+
+<header class="topbar glass" id="topbar">
+  <a class="brand" href="#top">
+    <span class="brand-mark">L</span>
+    <span class="brand-text"><strong>Li973</strong><small>personal space</small></span>
+  </a>
+  <nav class="nav" aria-label="主导航">
+    <a href="#top">首页</a>
+    <a href="#blog">博客</a>
+    <a href="https://github.com/Li973" target="_blank" rel="noopener">GitHub <svg class="ic"><use href="#i-ext"/></svg></a>
+    <a href="mailto:20236521@stu.neu.edu.cn">联系我</a>
+  </nav>
+</header>
+
+<main class="layout" id="top">
+
+  <!-- 左栏：窄，个人信息 -->
+  <aside class="sidebar">
+    <section class="glass profile" aria-label="个人信息">
+      <div class="avatar" aria-hidden="true"><span>Li</span></div>
+      <p class="hello">Hello, I'm</p>
+      <h1 class="name">Li973</h1>
+      <p class="tagline">在算力、训练与故事之间，找一点确定性。</p>
+
+      <div class="divider"></div>
+
+      <div class="info-block">
+        <h2 class="block-title"><svg class="ic"><use href="#i-star"/></svg>感兴趣的方向</h2>
+        <div class="chips">
+          <span class="chip">AI Infra</span>
+          <span class="chip">RL Infra</span>
+          <span class="chip">视觉小说</span>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <h2 class="block-title"><svg class="ic"><use href="#i-pin"/></svg>地址</h2>
+        <p class="info-line">东北大学浑南校区 <span class="sub">辽宁 · 沈阳</span></p>
+      </div>
+
+      <div class="info-block">
+        <h2 class="block-title"><svg class="ic"><use href="#i-star"/></svg>近期工作 <span class="badge" id="workCount">1</span></h2>
+        <!-- 新增工作时把最新的 <li> 放在最上面即可，脚本只保留最近 3 条 -->
+        <ul class="works" id="workList">
+          <li>
+            <a href="https://li973.github.io/NeutronMP/" target="_blank" rel="noopener">
+              <span class="work-title">NeutronMP: Multi-Model Parallelism for Breaking Synchronization Barriers in Distributed GNN Training</span>
+              <span class="work-meta">Project Page <svg class="ic"><use href="#i-ext"/></svg></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <h2 class="block-title"><svg class="ic"><use href="#i-mail"/></svg>Email</h2>
+        <p class="mail"><a href="mailto:20236521@stu.neu.edu.cn">20236521@stu.neu.edu.cn</a></p>
+        <p class="mail"><a href="mailto:1614949114@qq.com">1614949114@qq.com</a></p>
+      </div>
+
+      <a class="github-link" href="https://github.com/Li973" target="_blank" rel="noopener">
+        <svg class="ic"><use href="#i-github"/></svg> github.com/Li973 <svg class="ic"><use href="#i-ext"/></svg>
+      </a>
+    </section>
+  </aside>
+
+  <!-- 右栏：宽，博客文章 -->
+  <section class="content" id="blog" aria-label="博客文章">
+    <div class="glass section-head">
+      <div>
+        <p class="eyebrow">WRITING / NOTES</p>
+        <h2 class="section-title">博客文章</h2>
+        <p class="section-desc">关于系统、训练与一些慢慢想明白的事。支持 Markdown 与 LaTeX。</p>
+      </div>
+      <span class="count" id="postCount">—</span>
+    </div>
+
+    <div class="post-list" id="postList">
+      <div class="glass post placeholder">正在载入文章…</div>
+    </div>
+
+    <p class="end-note">— 已经到底啦 —</p>
+  </section>
+</main>
+
+<footer class="footer">
+  <span>© <span id="year">2026</span> Li973</span>
+  <span class="sep">·</span>
+  <span>背景图 © 原作者，仅作个人主页使用</span>
+  <span class="sep">·</span>
+  <span>Built with a little bit of glass and math</span>
+</footer>
+
+<div class="scroll-hint" id="scrollHint" aria-hidden="true">向下滚动<span>↓</span></div>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部"><svg class="ic"><use href="#i-up"/></svg></button>
+
+</body>
+</html>
